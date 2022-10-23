@@ -1,6 +1,14 @@
-// kill script
+/*
+ * Module code goes here. Use 'module.exports' to export things:
+ * module.exports.thing = 'a thing';
+ *
+ * You can import it from another modules like this:
+ * var mod = require('kill');
+ * mod.thing == 'a thing'; // true
+ */
+
 module.exports = () => {
-  for (const creep in Game.creeps) {
-    Game.creeps[creep].suicide();
-  }
+    for (const creep in Game.creeps) {
+        Game.creeps[creep].suicide();
+    }
 };

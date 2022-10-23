@@ -1,5 +1,25 @@
-const myRoom = require('myRoom');
-const task = require('task');
+/**
+ * GLOBAL MODULES loaded in specific order
+ */
+_ = require('lodash');
+role = require('role');
+action = require('action');
+bodyParts = require('bodyParts');
+sayText = require('sayText');
+helper = require('helper');
+task = require('task');
+creepType = require('creepType');
+creepFactory = require('creepFactory');
+roomTask = require('roomTask');
+
+/**
+ * GLOBAL CONFIGS
+ */
+
+maxHarvesters = 6;
+maxBuilders = 8;
+maxUpgraders = 6;
+maxRepairers = 2;
 
 module.exports.loop = () => {
   for (const name in Memory.creeps) {
@@ -10,6 +30,6 @@ module.exports.loop = () => {
   }
   // find my rooms and run them
   for (const room in Game.rooms) {
-    myRoom.run(Game.rooms[room]);
+    roomTask.run(Game.rooms[room]);
   }
 };

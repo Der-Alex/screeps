@@ -1,7 +1,3 @@
-const creepType = require('creepType');
-const role = require('role');
-const action = require('action');
-
 const creepFactory = {
   createCreep: (spawn, creepType, creepRole = null, creepAction = null, priority = null) => {
     let name = creepType.name + Date.now();
@@ -35,11 +31,11 @@ const creepFactory = {
   },
   createHarvester: (spawn, priority = null) => {
     console.log('creating harvester', spawn);
-    return creepFactory.createCreep(spawn, creepType.WORKER, role.UPGRADER, action.HARVEST, priority);
+    return creepFactory.createCreep(spawn, creepType.WORKER, role.HARVESTER, action.HARVEST, priority);
   },
   createRepairer: (spawn) => {
     console.log('creating repairer', spawn);
-    return creepFactory.createCreep(spawn, creepType.WORKER, role.REPAIR, action.REPAIR);
+    return creepFactory.createCreep(spawn, creepType.WORKER, role.REPAIRER, action.REPAIR);
   },
 };
 module.exports = creepFactory;

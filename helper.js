@@ -1,5 +1,3 @@
-const _ = require('lodash');
-
 const helper = {
   createName: (creepRole) => {
     return creepRole + Date.now();

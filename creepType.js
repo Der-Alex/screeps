@@ -1,8 +1,3 @@
-const helper = require('helper');
-const role = require('role');
-const action = require('action');
-const bodyParts = require('bodyParts');
-
 const creepType = {
   DEFENDER: {
     name: 'defender_',
