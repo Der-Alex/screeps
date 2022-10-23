@@ -20,10 +20,12 @@ const createWorker = (room) => {
   if (s1.spawning) {
     const spawningCreep = Game.creeps[s1.spawning.name];
     //helper.changeRole(spawningCreep, currentRole);
-    s1.room.visual.text('🛠️: ' + spawningCreep.memory.role, s1.pos.x + 1, s1.pos.y, {
+    s1.room.visual.text('🛠️: ' + spawningCreep.memory.role, s1.pos.x + 2, s1.pos.y, {
       align: 'left',
       opacity: 0.8,
       font: '16px sans-serif',
+      backgroundColor: '#000000',
+      backgroundPadding: 0.5,
     });
   }
 };
