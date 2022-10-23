@@ -7,6 +7,7 @@ const action = {
   SCOUT: '🔍',
   TRANSFER: '🚚️',
   UPGRADE: '⏫',
+  REPAIR: '🔧',
   WAIT: '💤',
 };
 

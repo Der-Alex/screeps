@@ -37,5 +37,9 @@ const creepFactory = {
     console.log('creating harvester', spawn);
     return creepFactory.createCreep(spawn, creepType.WORKER, role.UPGRADER, action.HARVEST, priority);
   },
+  createRepairer: (spawn) => {
+    console.log('creating repairer', spawn);
+    return creepFactory.createCreep(spawn, creepType.WORKER, role.REPAIR, action.REPAIR);
+  },
 };
 module.exports = creepFactory;
