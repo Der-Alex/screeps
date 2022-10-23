@@ -26,15 +26,15 @@ const creepFactory = {
     return creepFactory.createCreep(spawn, creepType.WORKER);
   },
   createBuilder: (spawn) => {
-    console.log('creating worker', spawn);
+    console.log('creating builder', spawn);
     return creepFactory.createCreep(spawn, creepType.WORKER, role.BUILDER, action.HARVEST);
   },
   createUpgrader: (spawn) => {
-    console.log('creating worker', spawn);
+    console.log('creating updater', spawn);
     return creepFactory.createCreep(spawn, creepType.WORKER, role.UPGRADER, action.HARVEST);
   },
   createHarvester: (spawn, priority = null) => {
-    console.log('creating worker', spawn);
+    console.log('creating harvester', spawn);
     return creepFactory.createCreep(spawn, creepType.WORKER, role.UPGRADER, action.HARVEST, priority);
   },
 };

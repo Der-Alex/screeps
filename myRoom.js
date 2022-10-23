@@ -14,13 +14,13 @@ const myRoom = {
   run: (room) => {
     // find sources in room
     sources = room.find(FIND_SOURCES); // should be 2
-    // build breeper
+    // build creep
     // give role until enough of same role
     // then change role
     // if enough creeper - stop
-    if (helper.getCreepsByRoom(room.name).length <= maxBuilders + maxHarvesters + maxUpgraders) {
+    if (helper.getCreepsByRoom(room.name).length <> maxBuilders + maxHarvesters + maxUpgraders) {
       createWorker(room);
-      changeRole(room);
+      // changeRole(room);
     } else {
       currentRole = role.HARVESTER;
       say(room, 'MAX WORKER REACHED');
@@ -36,12 +36,28 @@ const createWorker = (room) => {
   const s1 = room.find(FIND_MY_SPAWNS)[0];
   if (!s1.spawning && room.energyAvailable >= 300) {
     console.log('available energy', room.energyAvailable);
-    const res = creepFactory.createWorker(s1);
+    //const res = creepFactory.createWorker(s1);
     say(room, 'WORKER STATE: ' + res);
+
+    let r = Math.floor(Math.random() * 3);
+    console.log('random', r);
+    let res = null;
+    switch (r) {
+        case 0:
+           res = creepFactory.createHarvester(s1);
+            break;
+        case 1:
+           res = creepFactory.createBuilder(s1);
+           break;
+        case 2:
+           res = creepFactory.createUpgrader(s1);
+        default: break;
+    }
+
   }
   if (s1.spawning) {
     const spawningCreep = Game.creeps[s1.spawning.name];
-    helper.changeRole(spawningCreep, currentRole);
+    // helper.changeRole(spawningCreep, currentRole);
     s1.room.visual.text('🛠️:' + spawningCreep.memory.role + ':' + spawningCreep.name, s1.pos.x + 1, s1.pos.y, {
       align: 'left',
       opacity: 0.8,
@@ -54,7 +70,7 @@ const changeRole = (room) => {
   let currentBuilders = helper.getAmount(role.BUILDER, room.name);
   let currentUpgraders = helper.getAmount(role.UPGRADER, room.name);
 
-  console.log('h', currentHarvesters, 'b', currentBuilders, 'u', currentUpgraders);
+  //console.log('h', currentHarvesters, 'b', currentBuilders, 'u', currentUpgraders);
 
   if (currentHarvesters > maxHarvesters && currentRole != role.BUILDER) {
     currentRole = role.BUILDER;
@@ -65,7 +81,6 @@ const changeRole = (room) => {
 };
 
 const say = (room, text) => {
-  currentRole = role.HARVESTER;
   room.visual.text(text, 0, 0, {
     align: 'left',
     opacity: 0.8,
