@@ -1,27 +1,20 @@
 // harvest or transfer energy
 const harvesterTask = (room) => {
-  const sources = room.find(FIND_SOURCES); // should be 2
-
-  if (sources) {
-    let currentSource = sources[1];
-    const harvesters = helper.getCreepsByRole(role.HARVESTER, room.name);
-    if (harvesters.length > 0) {
-      harvesters[0].memory.priority = STRUCTURE_SPAWN;
+  const containers = room.find(FIND_STRUCTURES, { filter: (structure) => structure.structureType = STRUCTURE_CONTAINER }); 
+  const harvesters = helper.getCreepsByRole(role.HARVESTER, room.name);
+  for (let i = 0; i < harvesters.length; i++) {
+    let container = null;
+    if (containers[i]) {
+      container = containers[i];
     }
-    if (harvesters.length > 4) {
-      harvesters[1].memory.priority = STRUCTURE_SPAWN;
+    if (container && harvesters[i].pos.getRangeTo(container) == 0) {
+      const source = harvesters[i].pos.findClosestByPath(FIND_SOURCES);
+      harvesters[i].harvest(source);
+    } else {
+      harvesters[i].moveTo(container);
     }
-    for (let i = 0; i < harvesters.length; i++) {
-      if (!task.harvest(harvesters[i], currentSource) && harvesters[i].memory.action != action.TRANSFER) {
-        helper.changeAction(harvesters[i], action.TRANSFER);
-      }
-      if (!task.transfer(harvesters[i]) && harvesters[i].memory.action != action.HARVEST) {
-        helper.changeAction(harvesters[i], action.HARVEST);
-      }
-    }
-  } else {
-    sayText(room, 'NO SOURCE');
   }
+
 };
 
 module.exports = harvesterTask;

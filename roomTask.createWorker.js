@@ -4,9 +4,14 @@ const createWorker = (room) => {
     console.log('available energy', room.energyAvailable);
     //console.log('r', helper.getAmount(role.REPAIRER, room.name), helper.getAmount(role.HARVESTER, room.name) < maxHarvesters);
     let res = null;
-    if (helper.getAmount(role.HARVESTER, room.name) < maxHarvesters) {
+    // We need as much miner as sources. here we place containers and let the miners mine into the containers
+    const containers = room.find(FIND_STRUCTURES, { filter: (structure) => structure.structureType = STRUCTURE_CONTAINER });
+
+    if (helper.getAmount(role.HARVESTER, room.name) < room.find(FIND_SOURCES).length && containers) {
       res = creepFactory.createHarvester(s1);
-    } else if (helper.getAmount(role.BUILDER, room.name) < maxBuilders) {
+    } else if (helper.getAmount(role.WORKER, room.name) < maxWorker) {
+      creepFactory.createWorker(s1);
+    } else if (helper.getAmount(role.BUILDER, room.name) < maxBuilders && room.find(FIND_MY_CONSTRUCTION_SITES).length > 0) {
       res = creepFactory.createBuilder(s1);
     } else if (helper.getAmount(role.UPGRADER, room.name) < maxUpgraders) {
       res = creepFactory.createUpgrader(s1);

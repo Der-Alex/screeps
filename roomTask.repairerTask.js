@@ -6,11 +6,11 @@ const repairerTask = (room) => {
     let currentSource = sources[0];
     const repairers = helper.getCreepsByRole(role.REPAIRER, room.name);
     for (let i = 0; i < repairers.length; i++) {
-      if (!task.harvest(repairers[i], currentSource) && repairers[i].memory.action != action.REPAIR) {
+      if (!task.withdraw(repairers[i]) && repairers[i].memory.action != action.REPAIR) {
         helper.changeAction(repairers[i], action.REPAIR);
       }
-      if (!task.repair(repairers[i]) && repairers[i].memory.action != action.HARVEST) {
-        helper.changeAction(repairers[i], action.HARVEST);
+      if (!task.repair(repairers[i]) && repairers[i].memory.action != action.WITHDRAW) {
+        helper.changeAction(repairers[i], action.WITHDRAW);
       }
     }
   } else {

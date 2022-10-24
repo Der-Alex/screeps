@@ -4,6 +4,7 @@ builderTask = require('roomTask.builderTask');
 upgraderTask = require('roomTask.upgraderTask');
 repairerTask = require('roomTask.repairerTask');
 towerTask = require('roomTask.towerTask');
+workerTask = require('roomTask.workerTask');
 
 const roomTask = {
   run: (room) => {
@@ -13,6 +14,9 @@ const roomTask = {
     // then change role
     // if enough creeper - stop
     createWorker(room);
+    if (helper.getAmount(role.WORKER, room.name) > 0) {
+      workerTask(room);
+    }
     if (helper.getAmount(role.HARVESTER, room.name) > 0) {
       harvesterTask(room);
     }

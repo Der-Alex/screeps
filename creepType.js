@@ -23,6 +23,12 @@ const creepType = {
     action: action.WAIT,
     bodyParts: bodyParts.SCOUT,
   },
+  HARVESTER: {
+    name: 'HARVESTER_',
+    role: role.HARVESTER,
+    action: action.HARVEST,
+    bodyParts: bodyParts.HARVESTER,
+  },
   WORKER: {
     name: 'worker_',
     role: role.HARVESTER,

@@ -19,8 +19,8 @@ Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.r
 Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').HARVESTER)].memory.priority = STRUCTURE_TOWER;
 
 // find by role
-Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').HARVESTER).length;
-Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').BUILDER).length;
-Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').UPGRADER).length;
-Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').REPAIRER).length;
-Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.priority && Game.creeps[creep].memory.priority != null).length;
+console.log('h', Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').HARVESTER).length,
+'b', Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').BUILDER).length,
+'u', Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').UPGRADER).length,
+'r', Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.role == require('role').REPAIRER).length,
+'h-p', Object.keys(Game.creeps).filter((creep) => Game.creeps[creep].memory.priority && Game.creeps[creep].memory.priority != null).length);

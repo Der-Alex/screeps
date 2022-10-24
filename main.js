@@ -16,10 +16,10 @@ roomTask = require('roomTask');
  * GLOBAL CONFIGS
  */
 
-maxHarvesters = 6;
-maxBuilders = 8;
-maxUpgraders = 6;
-maxRepairers = 2;
+maxWorker = 2;
+maxBuilders = 2;
+maxUpgraders = 2;
+maxRepairers = 1;
 
 module.exports.loop = () => {
   for (const name in Memory.creeps) {

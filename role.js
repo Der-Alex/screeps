@@ -7,6 +7,7 @@ const role = {
   SCOUT: '🛩️',
   UPGRADER: '🎇',
   REPAIRER: '🔧',
+  WORKER: '🛠️',
 };
 
 module.exports = role;

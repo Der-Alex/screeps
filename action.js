@@ -9,6 +9,7 @@ const action = {
   UPGRADE: '⏫',
   REPAIR: '🔧',
   WAIT: '💤',
+  WITHDRAW: '🛻'
 };
 
 module.exports = action;

@@ -3,6 +3,7 @@ harvest = require('task.harvest');
 repair = require('task.repair');
 transfer = require('task.transfer');
 upgrade = require('task.upgrade');
+withdraw = require('task.withdraw');
 
 const task = {
   build,
@@ -10,6 +11,7 @@ const task = {
   repair,
   transfer,
   upgrade,
+  withdraw
 };
 
 module.exports = task;
