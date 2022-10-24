@@ -14,6 +14,7 @@ const roomTask = {
     // then change role
     // if enough creeper - stop
     createWorker(room);
+    
     if (helper.getAmount(role.WORKER, room.name) > 0) {
       workerTask(room);
     }
