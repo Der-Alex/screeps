@@ -4,7 +4,11 @@ const build = (creep) => {
     if (targets.length > 0) {
       // todo: find next target?
       if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
+        creep.moveTo(targets[0], {
+          reusePath: 50,
+          noPathFinding: false,
+          serializeMemory: true,
+          visualizePathStyle: { stroke: '#ff0000' } });
       }
       if (creep.build(targets[0]) != ERR_NOT_IN_RANGE && creep.build(targets[0]) != OK && creep.build(targets[0]) != ERR_BUSY) {
         console.log('-- BUILD GONE WRONG --', creep.build(targets[0]));

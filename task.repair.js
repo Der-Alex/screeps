@@ -5,7 +5,11 @@ const repair = (creep) => {
     });
     if (closestDamagedStructure) {
       if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(closestDamagedStructure);
+        creep.moveTo(closestDamagedStructure, {
+          reusePath: 50,
+          noPathFinding: false,
+          serializeMemory: true,
+          visualizePathStyle: { stroke: '#bb0000' } });
       }
       if (
         creep.repair(closestDamagedStructure) != OK &&

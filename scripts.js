@@ -11,8 +11,9 @@ require('creepFactory').createHarvester(Game.spawns.Spawn1, STRUCTURE_TOWER); //
 // change role
 Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').HARVESTER)].memory.role = require('role').BUILDER;
 Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').HARVESTER)].memory.role = require('role').UPGRADER;
-Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').UPGRADER)].memory.role = require('role').HARVESTER;
 Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').HARVESTER)].memory.role = require('role').REPAIRER;
+Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').UPGRADER)].memory.role = require('role').HARVESTER;
+Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').BUILDER)].memory.role = require('role').HARVESTER;
 
 // give harvester priority structure transfer
 Game.creeps[Object.keys(Game.creeps).find((creep) => Game.creeps[creep].memory.role == require('role').HARVESTER)].memory.priority = STRUCTURE_TOWER;

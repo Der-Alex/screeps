@@ -37,7 +37,11 @@ const transfer = (creep) => {
       }
 
       if (creep.transfer(targets[currentTarget], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(targets[currentTarget], { visualizePathStyle: { stroke: '#ffffff' } });
+        creep.moveTo(targets[currentTarget], {
+          reusePath: 50,
+          noPathFinding: false,
+          serializeMemory: true,
+          visualizePathStyle: { stroke: '#00ff00' } });
       }
       if (
         creep.transfer(targets[currentTarget], RESOURCE_ENERGY) != OK &&
