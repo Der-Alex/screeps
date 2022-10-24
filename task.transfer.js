@@ -28,12 +28,12 @@ const transfer = (creep) => {
       const extensionIndex = targets.findIndex((target) => target.structureType == STRUCTURE_EXTENSION);
       const spawnIndex = targets.findIndex((target) => target.structureType == STRUCTURE_SPAWN);
       let currentTarget = 0;
-      if (towerIndex > 0) {
+      if (spawnIndex > 0) {
+        currentTarget = spawnIndex;
+      } else if (towerIndex > 0) {
         currentTarget = towerIndex;
       } else if (extensionIndex > 0) {
         currentTarget = extensionIndex;
-      } else if (spawnIndex > 0) {
-        currentTarget = spawnIndex;
       }
 
       if (creep.transfer(targets[currentTarget], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {

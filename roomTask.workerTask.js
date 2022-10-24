@@ -18,4 +18,4 @@ const workerTask = (room) => {
   }
 };
 
-module.exports = harvesterTask;
+module.exports = workerTask;
