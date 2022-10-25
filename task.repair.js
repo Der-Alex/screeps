@@ -19,6 +19,7 @@ const repair = (creep) => {
         console.log('-- REPAIR GONE WRONG --', creep.repair(closestDamagedStructure));
         return false;
       }
+      creep.say(action.REPAIR);
       return true;
     }
   }

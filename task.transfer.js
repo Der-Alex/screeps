@@ -16,7 +16,7 @@ const transfer = (creep) => {
       targets = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
           return (
-            (structure.structureType == STRUCTURE_TOWER || structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+            (structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_TOWER) &&
             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
           );
         },
@@ -28,7 +28,7 @@ const transfer = (creep) => {
       const extensionIndex = targets.findIndex((target) => target.structureType == STRUCTURE_EXTENSION);
       const spawnIndex = targets.findIndex((target) => target.structureType == STRUCTURE_SPAWN);
       let currentTarget = 0;
-      if (spawnIndex > 0) {
+      if (spawnIndex == 0) {
         currentTarget = spawnIndex;
       } else if (towerIndex > 0) {
         currentTarget = towerIndex;

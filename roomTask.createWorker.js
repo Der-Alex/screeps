@@ -1,12 +1,11 @@
 const createWorker = (room) => {
   const s1 = room.find(FIND_MY_SPAWNS)[0];
   if (!s1.spawning && room.energyAvailable >= 300) {
-    console.log('available energy', room.energyAvailable);
+    //console.log('available energy', room.energyAvailable);
     //console.log('r', helper.getAmount(role.REPAIRER, room.name), helper.getAmount(role.HARVESTER, room.name) < maxHarvesters);
     let res = null;
     // We need as much miner as sources. here we place containers and let the miners mine into the containers
-    const containers = room.find(FIND_STRUCTURES, { filter: {structureType : STRUCTURE_CONTAINER }});
-
+    const containers = helper.getContainersByRoom(room);
     if (helper.getAmount(role.HARVESTER, room.name) < room.find(FIND_SOURCES).length && containers.length > 0) {
       res = creepFactory.createHarvester(s1);
     } else if (helper.getAmount(role.WORKER, room.name) < maxWorker) {

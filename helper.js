@@ -29,6 +29,16 @@ const helper = {
   setPriority: (creep, priority) => {
     creep.memory.priority = priority;
   },
+  getContainersByRoom: (room) => {
+    return room.find(FIND_STRUCTURES, { filter: {structureType : STRUCTURE_CONTAINER }});
+  },
+  hasFilledContainer: (room) => {
+    const containers = this.getContainersByRoom(room);
+    if (containers) {
+      return _.filter(this.getContainersByRoom(room), container => container.store[RESOURCE_ENERGY] > 0).length > 0;
+    }
+    return false;
+  }
 };
 
 module.exports = helper;

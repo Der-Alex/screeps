@@ -1,6 +1,10 @@
 // harvest or transfer energy
 const harvesterTask = (room) => {
-  const containers = room.find(FIND_STRUCTURES, { filter: (structure) => structure.structureType = STRUCTURE_CONTAINER }); 
+  const containers = room.find(FIND_STRUCTURES, {
+    filter: {
+      structureType: STRUCTURE_CONTAINER 
+    }
+  }); 
   const harvesters = helper.getCreepsByRole(role.HARVESTER, room.name);
   for (let i = 0; i < harvesters.length; i++) {
     let container = null;
