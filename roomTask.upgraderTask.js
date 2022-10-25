@@ -11,8 +11,8 @@ const upgraderTask = (room) => {
       if (!task.withdraw(upgraders[i]) && upgraders[i].memory.action != action.UPGRADE) {
         helper.changeAction(upgraders[i], action.UPGRADE);
       }
-      if (!task.build(upgraders[i]) && upgraders[i].memory.action != nextAction) {
-        helper.changeAction(upgraders[i], nextAction);
+      if (!task.upgrade(upgraders[i]) && upgraders[i].memory.action != action.WITHDRAW) {
+        helper.changeAction(upgraders[i], action.WITHDRAW);
       }
     }
   } else {
